@@ -75,14 +75,14 @@
   const noBtn = document.getElementById("noBtn");
   const memes = document.getElementById("memes");
 
-  // ✅ Sad violin hosted on stable site as MP3
-  const violinAudio = new Audio("https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3");
+  // 🎻 Real sad violin
+  const violinAudio = new Audio("https://raw.githubusercontent.com/itsron143/hosted-audio/main/sad-violin.mp3");
   violinAudio.loop = true;
 
-  // ✅ XP error
+  // 💀 XP Error sound
   const sadSound = new Audio("https://www.myinstants.com/media/sounds/windows-xp-error.mp3");
 
-  // Make "Yes" run + play violin
+  // Yes = move + violin
   yesBtn.addEventListener("click", () => {
     violinAudio.play().catch(() => {});
     yesBtn.style.top = Math.random() * 200 + "px";
@@ -90,13 +90,14 @@
     yesBtn.style.position = "absolute";
   });
 
-  // Make "No" show memes + violin + error sound
+  // No = memes + error + violin
   noBtn.addEventListener("click", () => {
     violinAudio.play().catch(() => {});
     memes.style.display = "block";
     sadSound.play().catch(() => {});
   });
 </script>
+
 
 </body>
 </html>
