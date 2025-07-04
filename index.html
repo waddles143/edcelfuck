@@ -71,45 +71,41 @@
   </div>
 
   <script>
-  const yesBtn = document.getElementById("yesBtn");
-  const noBtn = document.getElementById("noBtn");
-  const memes = document.getElementById("memes");
+    const yesBtn = document.getElementById("yesBtn");
+    const noBtn = document.getElementById("noBtn");
+    const memes = document.getElementById("memes");
 
-  // ✅ Final working sad violin
-  const violinAudio = new Audio("https://github.com/zzzen/sad-assets/raw/main/sad-violin.mp3");
-  violinAudio.loop = true;
+    const violinAudio = new Audio("https://github.com/zzzen/sad-assets/raw/main/sad-violin.mp3");
+    violinAudio.loop = true;
 
-  // 💀 Error sound
-  const sadSound = new Audio("https://www.myinstants.com/media/sounds/windows-xp-error.mp3");
+    const sadSound = new Audio("https://www.myinstants.com/media/sounds/windows-xp-error.mp3");
 
-  // 🛠 Unlock audio on first tap or click
-  let audioUnlocked = false;
-  function unlockAudio() {
-    if (!audioUnlocked) {
-      violinAudio.play().then(() => {
-        violinAudio.pause(); // preload
-        audioUnlocked = true;
-      }).catch(() => {});
+    // Unlock audio on first user interaction (mobile fix)
+    let audioUnlocked = false;
+    function unlockAudio() {
+      if (!audioUnlocked) {
+        violinAudio.play().then(() => {
+          violinAudio.pause();
+          audioUnlocked = true;
+        }).catch(() => {});
+      }
     }
-  }
-  document.addEventListener("click", unlockAudio);
-  document.addEventListener("touchstart", unlockAudio);
+    document.addEventListener("click", unlockAudio);
+    document.addEventListener("touchstart", unlockAudio);
 
-  yesBtn.addEventListener("click", () => {
-    violinAudio.play().catch(() => {});
-    yesBtn.style.top = Math.random() * 200 + "px";
-    yesBtn.style.left = Math.random() * 300 + "px";
-    yesBtn.style.position = "absolute";
-  });
+    // Yes = runaway button
+    yesBtn.addEventListener("mouseover", () => {
+      yesBtn.style.top = Math.random() * 200 + "px";
+      yesBtn.style.left = Math.random() * 300 + "px";
+      yesBtn.style.position = "absolute";
+    });
 
-  noBtn.addEventListener("click", () => {
-    violinAudio.play().catch(() => {});
-    memes.style.display = "block";
-    sadSound.play().catch(() => {});
-  });
-</script>
-
-
-
+    // No = show memes, play audio
+    noBtn.addEventListener("click", () => {
+      violinAudio.play().catch(() => {});
+      memes.style.display = "block";
+      sadSound.play().catch(() => {});
+    });
+  </script>
 </body>
 </html>
