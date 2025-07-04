@@ -71,36 +71,32 @@
   </div>
 
   <script>
-    const yesBtn = document.getElementById("yesBtn");
-    const noBtn = document.getElementById("noBtn");
-    const memes = document.getElementById("memes");
+  const yesBtn = document.getElementById("yesBtn");
+  const noBtn = document.getElementById("noBtn");
+  const memes = document.getElementById("memes");
 
-    // 🎻 Working violin audio hosted on reliable CDN
-    const violinAudio = new Audio("https://upload.wikimedia.org/wikipedia/commons/4/45/Sad_violin.wav");
-    violinAudio.loop = true;
+  // ✅ Sad violin hosted on stable site as MP3
+  const violinAudio = new Audio("https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3");
+  violinAudio.loop = true;
 
-    // 💀 Windows XP error sound
-    const sadSound = new Audio("https://www.myinstants.com/media/sounds/windows-xp-error.mp3");
+  // ✅ XP error
+  const sadSound = new Audio("https://www.myinstants.com/media/sounds/windows-xp-error.mp3");
 
-    // Violin starts when buttons are used (mobile safe)
-    const startViolin = () => {
-      violinAudio.play().catch(() => {});
-    };
+  // Make "Yes" run + play violin
+  yesBtn.addEventListener("click", () => {
+    violinAudio.play().catch(() => {});
+    yesBtn.style.top = Math.random() * 200 + "px";
+    yesBtn.style.left = Math.random() * 300 + "px";
+    yesBtn.style.position = "absolute";
+  });
 
-    // Runaway "Yes"
-    yesBtn.addEventListener("mouseover", () => {
-      startViolin();
-      yesBtn.style.top = Math.random() * 200 + "px";
-      yesBtn.style.left = Math.random() * 300 + "px";
-      yesBtn.style.position = "absolute";
-    });
+  // Make "No" show memes + violin + error sound
+  noBtn.addEventListener("click", () => {
+    violinAudio.play().catch(() => {});
+    memes.style.display = "block";
+    sadSound.play().catch(() => {});
+  });
+</script>
 
-    // Show memes and play sounds on "No"
-    noBtn.addEventListener("click", () => {
-      startViolin();
-      memes.style.display = "block";
-      sadSound.play().catch(() => {});
-    });
-  </script>
 </body>
 </html>
