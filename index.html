@@ -75,16 +75,26 @@
   const noBtn = document.getElementById("noBtn");
   const memes = document.getElementById("memes");
 
-  // 🎻 Real sad violin
-  const violinAudio = new Audio("https://raw.githubusercontent.com/knyzlz/sound-host/main/sad-violin.mp3");
-violinAudio.loop = true;
+  // ✅ Final working sad violin
+  const violinAudio = new Audio("https://github.com/zzzen/sad-assets/raw/main/sad-violin.mp3");
+  violinAudio.loop = true;
 
-
-
-  // 💀 XP Error sound
+  // 💀 Error sound
   const sadSound = new Audio("https://www.myinstants.com/media/sounds/windows-xp-error.mp3");
 
-  // Yes = move + violin
+  // 🛠 Unlock audio on first tap or click
+  let audioUnlocked = false;
+  function unlockAudio() {
+    if (!audioUnlocked) {
+      violinAudio.play().then(() => {
+        violinAudio.pause(); // preload
+        audioUnlocked = true;
+      }).catch(() => {});
+    }
+  }
+  document.addEventListener("click", unlockAudio);
+  document.addEventListener("touchstart", unlockAudio);
+
   yesBtn.addEventListener("click", () => {
     violinAudio.play().catch(() => {});
     yesBtn.style.top = Math.random() * 200 + "px";
@@ -92,13 +102,13 @@ violinAudio.loop = true;
     yesBtn.style.position = "absolute";
   });
 
-  // No = memes + error + violin
   noBtn.addEventListener("click", () => {
     violinAudio.play().catch(() => {});
     memes.style.display = "block";
     sadSound.play().catch(() => {});
   });
 </script>
+
 
 
 </body>
