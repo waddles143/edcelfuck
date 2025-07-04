@@ -1,0 +1,99 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>edcelfuck.com</title>
+  <style>
+    body {
+      background: #f0f0f0;
+      text-align: center;
+      font-family: 'Comic Sans MS', cursive;
+    }
+    .container {
+      margin-top: 50px;
+    }
+    img {
+      width: 250px;
+      border: 10px solid pink;
+      border-radius: 50%;
+      box-shadow: 0 0 20px #ff69b4;
+    }
+    h1 {
+      font-size: 28px;
+      margin-top: 20px;
+      color: #444;
+    }
+    .buttons {
+      margin-top: 30px;
+    }
+    .btn {
+      font-size: 20px;
+      padding: 10px 25px;
+      border: none;
+      border-radius: 10px;
+      margin: 0 15px;
+      cursor: pointer;
+    }
+    #yesBtn {
+      background-color: #4CAF50;
+      color: white;
+      position: relative;
+    }
+    #noBtn {
+      background-color: #f44336;
+      color: white;
+    }
+    #memes {
+      margin-top: 50px;
+      display: none;
+    }
+    .meme {
+      width: 200px;
+      margin: 10px;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <audio autoplay loop>
+    <source src="https://www.myinstants.com/media/sounds/sad-violin.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="container">
+    <img src="1000013523.jpg" alt="Main Photo">
+    <h1>would you do me?</h1>
+    <div class="buttons">
+      <button id="yesBtn" class="btn">Yes</button>
+      <button id="noBtn" class="btn">No</button>
+    </div>
+    <div id="memes">
+      <h2>:( damn okay...</h2>
+      <img class="meme" src="https://i.imgflip.com/7x6z9d.jpg" alt="Sad Meme">
+      <img class="meme" src="https://i.imgflip.com/4t0m5.jpg" alt="Sad Frog">
+      <img class="meme" src="https://i.imgflip.com/6j0b8a.jpg" alt="Pain">
+      <audio id="sadSound">
+        <source src="https://www.myinstants.com/media/sounds/windows-xp-error.mp3" type="audio/mpeg">
+      </audio>
+    </div>
+  </div>
+
+  <script>
+    const yesBtn = document.getElementById("yesBtn");
+    const noBtn = document.getElementById("noBtn");
+    const memes = document.getElementById("memes");
+    const sadSound = document.getElementById("sadSound");
+
+    yesBtn.addEventListener("mouseover", () => {
+      yesBtn.style.top = Math.random() * 200 + "px";
+      yesBtn.style.left = Math.random() * 300 + "px";
+      yesBtn.style.position = "absolute";
+    });
+
+    noBtn.addEventListener("click", () => {
+      memes.style.display = "block";
+      sadSound.play();
+    });
+  </script>
+</body>
+</html>
