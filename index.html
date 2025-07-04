@@ -75,12 +75,13 @@
     const noBtn = document.getElementById("noBtn");
     const memes = document.getElementById("memes");
 
-    const violinAudio = new Audio("https://github.com/zzzen/sad-assets/raw/main/sad-violin.mp3");
+    // Your sad violin file (must be in same folder)
+    const violinAudio = new Audio("sad-violin.mp3");
     violinAudio.loop = true;
 
     const sadSound = new Audio("https://www.myinstants.com/media/sounds/windows-xp-error.mp3");
 
-    // Unlock audio on first user interaction (mobile fix)
+    // Mobile unlock for autoplay
     let audioUnlocked = false;
     function unlockAudio() {
       if (!audioUnlocked) {
@@ -93,14 +94,14 @@
     document.addEventListener("click", unlockAudio);
     document.addEventListener("touchstart", unlockAudio);
 
-    // Yes = runaway button
+    // Runaway Yes button
     yesBtn.addEventListener("mouseover", () => {
       yesBtn.style.top = Math.random() * 200 + "px";
       yesBtn.style.left = Math.random() * 300 + "px";
       yesBtn.style.position = "absolute";
     });
 
-    // No = show memes, play audio
+    // No = memes and sound
     noBtn.addEventListener("click", () => {
       violinAudio.play().catch(() => {});
       memes.style.display = "block";
