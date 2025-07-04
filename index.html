@@ -75,26 +75,31 @@
     const noBtn = document.getElementById("noBtn");
     const memes = document.getElementById("memes");
 
-    // Sad violin audio
-    const violinAudio = new Audio("https://cdn.pixabay.com/download/audio/2023/03/30/audio_273f8bb994.mp3?filename=sad-violin-132138.mp3");
+    // 🎻 Working violin audio hosted on reliable CDN
+    const violinAudio = new Audio("https://upload.wikimedia.org/wikipedia/commons/4/45/Sad_violin.wav");
     violinAudio.loop = true;
 
-    // XP Error sound
+    // 💀 Windows XP error sound
     const sadSound = new Audio("https://www.myinstants.com/media/sounds/windows-xp-error.mp3");
 
-    // Hover Yes = move + violin
+    // Violin starts when buttons are used (mobile safe)
+    const startViolin = () => {
+      violinAudio.play().catch(() => {});
+    };
+
+    // Runaway "Yes"
     yesBtn.addEventListener("mouseover", () => {
-      violinAudio.play().catch(e => {});
+      startViolin();
       yesBtn.style.top = Math.random() * 200 + "px";
       yesBtn.style.left = Math.random() * 300 + "px";
       yesBtn.style.position = "absolute";
     });
 
-    // Click No = memes + sad sound + violin
+    // Show memes and play sounds on "No"
     noBtn.addEventListener("click", () => {
-      violinAudio.play().catch(e => {});
+      startViolin();
       memes.style.display = "block";
-      sadSound.play().catch(e => {});
+      sadSound.play().catch(() => {});
     });
   </script>
 </body>
