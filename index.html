@@ -55,10 +55,6 @@
   </style>
 </head>
 <body>
-  <audio autoplay loop>
-    <source src="https://www.myinstants.com/media/sounds/sad-violin.mp3" type="audio/mpeg">
-  </audio>
-
   <div class="container">
     <img src="1000013523.jpg" alt="Main Photo">
     <h1>would you do me?</h1>
@@ -71,9 +67,6 @@
       <img class="meme" src="https://i.imgflip.com/7x6z9d.jpg" alt="Sad Meme">
       <img class="meme" src="https://i.imgflip.com/4t0m5.jpg" alt="Sad Frog">
       <img class="meme" src="https://i.imgflip.com/6j0b8a.jpg" alt="Pain">
-      <audio id="sadSound">
-        <source src="https://www.myinstants.com/media/sounds/windows-xp-error.mp3" type="audio/mpeg">
-      </audio>
     </div>
   </div>
 
@@ -81,14 +74,29 @@
     const yesBtn = document.getElementById("yesBtn");
     const noBtn = document.getElementById("noBtn");
     const memes = document.getElementById("memes");
-    const sadSound = document.getElementById("sadSound");
 
+    // Sad violin loop
+    let violinAudio = new Audio("https://www.myinstants.com/media/sounds/sad-violin.mp3");
+    violinAudio.loop = true;
+
+    // Error sound
+    let sadSound = new Audio("https://www.myinstants.com/media/sounds/windows-xp-error.mp3");
+
+    // Play violin on first click
+    const playViolin = () => {
+      violinAudio.play();
+      document.removeEventListener("click", playViolin);
+    };
+    document.addEventListener("click", playViolin);
+
+    // "Yes" runs away
     yesBtn.addEventListener("mouseover", () => {
       yesBtn.style.top = Math.random() * 200 + "px";
       yesBtn.style.left = Math.random() * 300 + "px";
       yesBtn.style.position = "absolute";
     });
 
+    // "No" triggers memes and sad SFX
     noBtn.addEventListener("click", () => {
       memes.style.display = "block";
       sadSound.play();
