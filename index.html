@@ -63,10 +63,10 @@
       <button id="noBtn" class="btn">No</button>
     </div>
     <div id="memes">
-      <h2>:( damn okay...</h2>
-      <img class="meme" src="https://i.imgur.com/pu1XV0f.jpg" alt="Sad Cat">
-      <img class="meme" src="https://i.imgur.com/qWCSorK.jpg" alt="Sad Frog (Pepe)">
-      <img class="meme" src="https://i.imgur.com/kXvGJgB.jpg" alt="Pain Meme">
+      <h2>:&#40; damn okay...</h2>
+      <img class="meme" src="https://i.imgflip.com/7x6z9d.jpg" alt="Sad Meme">
+      <img class="meme" src="https://i.imgflip.com/4t0m5.jpg" alt="Sad Frog">
+      <img class="meme" src="https://i.imgflip.com/6j0b8a.jpg" alt="Pain">
     </div>
   </div>
 
@@ -75,28 +75,28 @@
     const noBtn = document.getElementById("noBtn");
     const memes = document.getElementById("memes");
 
-    // 🎻 Sad violin audio
+    // BETTER VIOLIN SOURCE
     let violinAudio = new Audio("https://cdn.pixabay.com/download/audio/2023/03/30/audio_273f8bb994.mp3?filename=sad-violin-132138.mp3");
     violinAudio.loop = true;
 
-    // 💀 Windows XP error sound
+    // Error sound
     let sadSound = new Audio("https://www.myinstants.com/media/sounds/windows-xp-error.mp3");
 
-    // 🔊 Play violin on first click
+    // Play violin on any first click
     const playViolin = () => {
       violinAudio.play();
       document.removeEventListener("click", playViolin);
     };
     document.addEventListener("click", playViolin);
 
-    // 🏃‍♂️ "Yes" button runs away
+    // Runaway "Yes"
     yesBtn.addEventListener("mouseover", () => {
       yesBtn.style.top = Math.random() * 200 + "px";
       yesBtn.style.left = Math.random() * 300 + "px";
       yesBtn.style.position = "absolute";
     });
 
-    // 😢 Show memes on "No"
+    // Sad memes on "No"
     noBtn.addEventListener("click", () => {
       memes.style.display = "block";
       sadSound.play();
